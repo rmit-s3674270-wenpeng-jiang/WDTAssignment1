@@ -17,9 +17,11 @@ namespace Assignment1ASR
         {
             roomList.Add(new Room("A"));
             
+            
             int mSelection; // Main Menu Selection
             int sfSelection; // Staff Menu Selection
             int stSelection; // Student Menu Selection
+
             //Main Menu 
             do
             {
@@ -52,6 +54,7 @@ namespace Assignment1ASR
                 else if (mSelection == 3)//staff menu
                 {
                     Console.WriteLine("--- Staff menu ---");
+                    Staffs staffs = new Staffs();
 
                     do
                     {
@@ -67,6 +70,7 @@ namespace Assignment1ASR
                         if (sfSelection == 1)
                         {
                             Console.WriteLine("--- List staff ---");
+                            //把数据库中的staff打印出来
                         }
                         else if (sfSelection == 2)
                         {
@@ -75,11 +79,12 @@ namespace Assignment1ASR
                         else if (sfSelection == 3)
                         {
                             Console.WriteLine("--- Create slots --- ");// Create a slot
-                            Staffs.createSlot();
+                            staffs.createSlot();
                         }
                         else if (sfSelection == 4)
                         {
                             Console.WriteLine("--- Remove slots --- ");
+                            //在slot有booking的情况下无法删除
                         }
                         else if (sfSelection == 5)
                         {
@@ -108,6 +113,7 @@ namespace Assignment1ASR
                         if (stSelection == 1)
                         {
                             Console.WriteLine("--- List students ---");
+                            //把数据库中的student打印出来
                         }
                         else if (stSelection == 2)
                         {
@@ -140,9 +146,7 @@ namespace Assignment1ASR
            
         }
 
-
-
-
+       
 
         public static bool checkInput(string input) // Check if input is valid
         {
@@ -186,7 +190,7 @@ namespace Assignment1ASR
 
         public static bool checkDate(string date)
         {
-            string pattern = @"\d{2}[-.]\d{2}[-.]\d{4}"; //check format dd-mm-yyyy
+            string pattern = @"^(0[1-9]|1[0-9]|2[0-9]|3[0-1])[-.](0[1-9]|1[0-2])[-.]\d{4}$"; //check format dd-mm-yyyy
 
             Match match = Regex.Match(date, pattern);
             if (match.Success)
@@ -202,7 +206,7 @@ namespace Assignment1ASR
 
         public static bool checkTime(string time)
         {
-            string pattern = @"\d{2}[-.]\d{2}"; //check format hh-mm
+            string pattern = @"^(09|1[0-3])[:.]00$"; //check format hh-mm
             Match match = Regex.Match(time, pattern);
             if (match.Success)
             {
@@ -210,7 +214,7 @@ namespace Assignment1ASR
             }
             else
             {
-                Console.WriteLine("Format is not correct");
+                Console.WriteLine("Enter time between 09:00 and 13:00");
                 return false;
             }
         }
@@ -226,6 +230,7 @@ namespace Assignment1ASR
                     return true;
                 }
             }
+            Console.WriteLine("Room is not available");
             return false;
         }
 
@@ -238,6 +243,7 @@ namespace Assignment1ASR
                     return true;
                 }
             }
+            Console.WriteLine("Date is not available");
             return false;
         }
 
@@ -250,8 +256,12 @@ namespace Assignment1ASR
                     return true;
                 }
             }
+            Console.WriteLine("Time is not available");
             return false;
         }
         //check room info in slot list
+
+
+        
     }
 }

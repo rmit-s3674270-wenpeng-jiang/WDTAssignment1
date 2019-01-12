@@ -17,6 +17,8 @@ namespace Assignment1ASR
             this._email = _email;
         }
 
+        public Users() { }
+
         public String name
         {
             get {

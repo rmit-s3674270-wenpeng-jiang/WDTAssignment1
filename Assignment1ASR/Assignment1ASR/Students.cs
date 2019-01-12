@@ -40,6 +40,7 @@ namespace Assignment1ASR
           //  {
                 Console.WriteLine("Enter student ID: ");
                 studentId = Console.ReadLine();
+            //需要在数据库找student的id是否存在
             //  } while ();
             Bookings booking = new Bookings(roomName, date, time, studentId);
             foreach (Slots slots in Program.slotList){

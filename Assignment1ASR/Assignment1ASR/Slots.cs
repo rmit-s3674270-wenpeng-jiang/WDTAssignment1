@@ -13,6 +13,8 @@ namespace Assignment1ASR
         private string _booking;
         private string _date;
 
+        
+
         public Slots (string _room, string _date, string _start, string _staffId)
         {
             this._room = _room;
