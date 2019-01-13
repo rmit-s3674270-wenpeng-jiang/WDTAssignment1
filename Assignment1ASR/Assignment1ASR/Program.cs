@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Data;
+using System.Data.SqlClient;
 
 
 namespace Assignment1ASR
@@ -36,21 +38,91 @@ namespace Assignment1ASR
                 mSelection = int.Parse(input);
                 if (mSelection == 1)
                 {
-                    Console.WriteLine("--- List rooms ---");
-                    Console.WriteLine("Room");
-                    foreach (Room room in roomList)
+                    SqlConnection conn = new SqlConnection("server=wdt2019.australiasoutheast.cloudapp.azure.com;uid=s3514856;database=s3514856;pwd=abc123;");
+                    SqlCommand query = new SqlCommand("select * from room", conn);
+                    SqlDataReader read;
+
+                    try
                     {
-                        Console.WriteLine(room.name);
+                        conn.Open();
+
+                        read = query.ExecuteReader();
+
+                        while (read.Read())
+                        {
+                            Console.WriteLine("{0}",
+                                            read["roomid"]);
+                        }
+                        
+                        read.Close();
                     }
+                    catch (SqlException se)
+                    {
+                        Console.WriteLine("SQL Exception: {0}", se.Message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception: {0}", e.Message);
+                    }
+                    finally
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
+
+                    //Console.WriteLine("--- List rooms ---");
+                    //Console.WriteLine("Room");
+                    //foreach (Room room in roomList)
+                    //{
+                    //    Console.WriteLine(room.name);
+                    //}
                 }
                 else if (mSelection == 2)
                 {
-                    Console.WriteLine("--- List slots ---");
+                    SqlConnection conn = new SqlConnection("server=wdt2019.australiasoutheast.cloudapp.azure.com;uid=s3514856;database=s3514856;pwd=abc123;");
+                    SqlCommand query = new SqlCommand("select * from slot", conn);
+                    SqlDataReader read;
 
-                    foreach (Slots slots in slotList)
+                    try
                     {
-                        Console.WriteLine(slots.room + " " +slots.date + " " + slots.start + " " + slots.staffId + " " + slots.booking);
+                        conn.Open();
+
+                        read = query.ExecuteReader();
+
+                        while (read.Read())
+                        {
+                            Console.WriteLine("{0}/n,{1}/n,{2}/n,{3}/n",
+                                            read["roomid"],
+                                read["starttime"],
+                                read["staffid"],
+                                read["bookedinstudentid"]
+                                );
+                        }
+
+                        read.Close();
                     }
+                    catch (SqlException se)
+                    {
+                        Console.WriteLine("SQL Exception: {0}", se.Message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception: {0}", e.Message);
+                    }
+                    finally
+                    {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
+                    //Console.WriteLine("--- List slots ---");
+                    //foreach (Slots slots in slotList)
+                    //{
+                    //    Console.WriteLine(slots.room + " " +slots.date + " " + slots.start + " " + slots.staffId + " " + slots.booking);
+                    //}
                 }
                 else if (mSelection == 3)//staff menu
                 {
@@ -70,8 +142,40 @@ namespace Assignment1ASR
                         sfSelection = int.Parse(input);
                         if (sfSelection == 1)
                         {
-                            Console.WriteLine("--- List staff ---");
-                            //把数据库中的staff打印出来
+                            SqlConnection conn = new SqlConnection("server=wdt2019.australiasoutheast.cloudapp.azure.com;uid=s3514856;database=s3514856;pwd=abc123;");
+                            SqlCommand query = new SqlCommand("select * from [user] where userid like 'e%' ", conn);
+                            SqlDataReader read;
+
+                            try
+                            {
+                                conn.Open();
+
+                                read = query.ExecuteReader();
+
+                                while (read.Read())
+                                {
+                                    Console.WriteLine("{0},{1},{2}",
+                                 read["Userid"],
+                                 read["Name"],
+                                 read["Email"]
+                                 );
+                                }
+                            }
+                            catch (SqlException se)
+                            {
+                                Console.WriteLine("SQL Exception: {0}", se.Message);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Exception: {0}", e.Message);
+                            }
+                            finally
+                            {
+                                if (conn.State == ConnectionState.Open)
+                                {
+                                    conn.Close();
+                                }
+                            }
                         }
                         else if (sfSelection == 2)
                         {
@@ -115,8 +219,41 @@ namespace Assignment1ASR
 
                         if (stSelection == 1)
                         {
-                            Console.WriteLine("--- List students ---");
-                            //把数据库中的student打印出来
+                            //Console.WriteLine("--- List students ---");
+                            SqlConnection conn = new SqlConnection("server=wdt2019.australiasoutheast.cloudapp.azure.com;uid=s3514856;database=s3514856;pwd=abc123;");
+                            SqlCommand query = new SqlCommand("select * from [user] where userid like 's%' ", conn);
+                            SqlDataReader read;
+
+                            try
+                            {
+                                conn.Open();
+
+                                read = query.ExecuteReader();
+
+                                while (read.Read())
+                                {
+                                    Console.WriteLine("{0},{1},{2}",
+                                 read["Userid"],
+                                 read["Name"],
+                                 read["Email"]
+                                 );
+                                }
+                            }
+                            catch (SqlException se)
+                            {
+                                Console.WriteLine("SQL Exception: {0}", se.Message);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Exception: {0}", e.Message);
+                            }
+                            finally
+                            {
+                                if (conn.State == ConnectionState.Open)
+                                {
+                                    conn.Close();
+                                }
+                            }
                         }
                         else if (stSelection == 2)
                         {
