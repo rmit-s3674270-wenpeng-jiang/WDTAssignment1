@@ -12,7 +12,7 @@ namespace Assignment1ASR
 
         public Staffs() { }
 
-        int maxSlot = 4;
+        int maxSlotPerDayStaff = 4;
 
         public void createSlot()
         {
@@ -48,23 +48,10 @@ namespace Assignment1ASR
             } while (!checkMaxSlot(staffId,date));
                 
             //需要在数据库中找staff的id是否存在
-
-            //if (staffSlotPair.ContainsKey(staffId) && staffSlotPair[staffId] < 4 )//如果存在当前staff，且slot小于4，那么slot个数加1
-            //{
-            //    staffSlotPair[staffId]++;
-            //}
-            //else if (staffSlotPair.ContainsKey(staffId) && staffSlotPair[staffId] == 4)
-            //{
-            //    Console.WriteLine(staffId + " has created 4 slots today");    
-            //}
-
-            //    staffSlotPair.Add(staffId, 1);//如果不存在当前staff，则添加新的staff，并把slot设置为1
-
-            
-            
-            
+         
             Slots slot = new Slots(roomName, date, time, staffId);
             Program.slotList.Add(slot);
+            Console.WriteLine("You created a new slot");
         }
 
         public bool checkMaxSlot(string staffid, string date) //检查staff每天创建的slot个数不能超过4
@@ -79,7 +66,7 @@ namespace Assignment1ASR
                 }
             }
 
-            if (count < maxSlot)
+            if (count < maxSlotPerDayStaff)
             {
                 return true;
             }
@@ -89,6 +76,5 @@ namespace Assignment1ASR
                 return false;
             }
         }
-
     }
 }

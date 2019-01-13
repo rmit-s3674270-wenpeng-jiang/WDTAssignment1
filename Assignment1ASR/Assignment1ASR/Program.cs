@@ -46,6 +46,7 @@ namespace Assignment1ASR
                 else if (mSelection == 2)
                 {
                     Console.WriteLine("--- List slots ---");
+
                     foreach (Slots slots in slotList)
                     {
                         Console.WriteLine(slots.room + " " +slots.date + " " + slots.start + " " + slots.staffId + " " + slots.booking);
@@ -75,11 +76,13 @@ namespace Assignment1ASR
                         else if (sfSelection == 2)
                         {
                             Console.WriteLine("--- Room availability ---");
+
                         }
                         else if (sfSelection == 3)
                         {
                             Console.WriteLine("--- Create slots --- ");// Create a slot
                             staffs.createSlot();
+                            Console.WriteLine("----------------------");
                         }
                         else if (sfSelection == 4)
                         {
@@ -123,6 +126,7 @@ namespace Assignment1ASR
                         {
                             Console.WriteLine("--- Make booking ---");
                             Students.makeBooking();
+                            Console.WriteLine("----------------------");
 
                         }
                         else if (stSelection == 4)
