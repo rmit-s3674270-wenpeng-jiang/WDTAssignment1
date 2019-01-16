@@ -4,22 +4,22 @@ using System.Text;
 
 namespace Assignment1ASR
 {
-    class Users
+    public abstract class Users
     {
         private string _name;
         private string _id;
         private string _email;
 
-        public Users(string _name, string _id, string _email)
+        public Users(string _id, string _name, string _email)
         {
-            this._name = _name;
             this._id = _id;
+            this._name = _name;
             this._email = _email;
         }
 
         public Users() { }
 
-        public String name
+        public string name
         {
             get {
                 return _name;
@@ -53,5 +53,7 @@ namespace Assignment1ASR
                 _email = value;
             }
         }
+
+        public abstract void Menu();
     }
 }

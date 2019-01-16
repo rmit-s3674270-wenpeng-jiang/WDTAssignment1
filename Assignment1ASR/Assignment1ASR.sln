@@ -1,13 +1,9 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-<<<<<<< Updated upstream
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment1ASR", "Assignment1ASR\Assignment1ASR.csproj", "{E542A28B-F7DF-4F99-B66C-ED1FD696B969}"
-=======
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1ASR", "Assignment1ASR\Assignment1ASR.csproj", "{E542A28B-F7DF-4F99-B66C-ED1FD696B969}"
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

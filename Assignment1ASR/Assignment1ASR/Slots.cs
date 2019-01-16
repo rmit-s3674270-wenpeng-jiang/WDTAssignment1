@@ -12,17 +12,25 @@ namespace Assignment1ASR
         private string _staffId;
         private string _booking;
         private string _date;
-
         
-
-        public Slots (string _room, string _date, string _start, string _staffId)
+        public Slots (string _room, string _date, string _start, string _end, string _staffId)
         {
             this._room = _room;
             this._date = _date;
             this._start = _start;
+            this._end = _end;
             this._staffId = _staffId;
         }
 
+        public Slots(string _room, string _date, string _start, string _end, string _staffId, string _booking)
+        {
+            this._room = _room;
+            this._date = _date;
+            this._start = _start;
+            this._end = _end;
+            this._staffId = _staffId;
+            this._booking = _booking;
+        }
         public string room
         {
             get
