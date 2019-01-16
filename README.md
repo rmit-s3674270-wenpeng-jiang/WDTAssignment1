@@ -40,7 +40,7 @@ Student.cs
 
 StudentFactory.cs
 
---the factory class of student, to creat staff object
+--the factory class of student, to creat student object
 
 User.cs
 
